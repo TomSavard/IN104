@@ -1,2 +1,6 @@
 Séance du 28/03/23
     . Prise en main de Github avec le tuto
+Pour la prochaine fois :
+    . Faire un fichier de génération de data
+    . Faire un fichier d'écriture de la data dans un .txt
+    . Faire un fichier de lecture 
