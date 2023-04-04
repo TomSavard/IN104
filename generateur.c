@@ -4,9 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 int plaisir_max=10;
 int croisement_max=6;
+
 int main(){
+
     // on stock les données dans un txt
     FILE *f;
     f = fopen("./data/test.txt", "w");
@@ -20,13 +23,13 @@ int main(){
     srand(t);
     int n=2+rand()%croisement_max;//ici 2 croisements minimum
 
+    // pour chaque croisement on génère un nombre de piste (avec nbr piste <= nbr croisement-1)
     int m=0;
     int nbr_piste[n];
-    // pour chaque croisement on génère un nombre de piste (avec nbr piste <= nbr croisement-1)
     for (int xi=0; xi<n; xi++){
-        int p=rand()%(n-1);//nbr de piste adjacente au croisement
+        int p=rand()%(n-1); //nbr de piste adjacente au croisement
         nbr_piste[xi]=p;
-        m=m+p;
+        m=m+p; 
     }
     fprintf(f,"%d %d\n",n,m);
 
