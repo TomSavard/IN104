@@ -52,13 +52,13 @@ struct data_t load(FILE *fichier){
 
 }
 
-void affiche_data(struct data_t donnée){
+void affiche_data(struct data_t data){
 
-    for (int j=0; j<=donnée.nbr_pistes-1; ++j) {
+    for (int j=0; j<=data.nbr_pistes-1; ++j) {
                
         for (int i=0; i<=2; ++i) {
           
-            printf("%d ",donnée.matrice[j][i]);
+            printf("%d ",data.matrice[j][i]);
         }
         printf("\n");    
     }
