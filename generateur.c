@@ -42,7 +42,7 @@ int main(){
             while (existe[yi]==1){
                 yi=rand()%(n-1);}
             existe[yi]=1;
-            int fi=rand()%plaisir_max;
+            int fi=2*(rand()%plaisir_max)-plaisir_max;
             fprintf(f,"%d %d %d\n",xi,yi,fi);
         }
     }
