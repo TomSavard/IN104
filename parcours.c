@@ -10,19 +10,19 @@
 #include <math.h>
 #include <time.h>
 
-struct data{
+struct data_t{
     int nbr_croisements;
     int nbr_pistes;
     int** matrice;
 };
 
-struct data load(FILE *fichier){
+struct data_t load(FILE *fichier){
 
     int croisement;
     int piste;
     int n;
     int read;
-    struct data res;
+    struct data_t res;
     
     read = fscanf (fichier, "%d", &croisement) ;
     read = fscanf (fichier, "%d", &piste) ;
@@ -52,7 +52,7 @@ struct data load(FILE *fichier){
 
 }
 
-void affiche_matrice(struct data donnée){
+void affiche_data(struct data_t donnée){
 
     for (int j=0; j<=donnée.nbr_pistes-1; ++j) {
                
@@ -64,27 +64,34 @@ void affiche_matrice(struct data donnée){
     }
 }
 
+
+int** make_adjacence(FILE* fichier){ // permet de réorganiser les données sous matrice d'adjacence.
+
+struct data_t data=load(fichier); //récupère les données
+
+int** adjacence=malloc(sizeof(int*)*data.nbr_croisements);
+
+for (int i=0; i<data.nbr_croisements; ++i) {  // on initialise la matrice avec des - inf pour les sommets non voisins 
+    adjacence[i]=malloc(sizeof(int)*data.nbr_croisements);
+    for (int j=0; j<=data.nbr_croisements; ++j) {
+    adjacence[i][j]=0;
+    }
+}
+
+for (int p=0; p<data.nbr_pistes; p++){ 
+    adjacence[data.matrice[p][0]][data.matrice[p][1]]=data.matrice[p][2];
+}
+
+return adjacence;} 
+
+
 int main ( int argc , char* argv [] ) {
 
     if (argc!=2){
         printf("Wrong number of argument\n");
         return (1);
     }
+FILE *fichier = fopen (argv[1], "r") ;
 
-    FILE *fichier = fopen (argv[1], "r") ;
-
-    int croisement;
-    fscanf (fichier, "%d", &croisement) ;
-    int piste;
-    fscanf (fichier, "%d", &piste) ;
-
-    fclose (fichier) ;
-    
-    fopen (argv[1], "r") ;
-    printf("nombre de pistes :%d\n",piste);
-    printf("nombre de croisements :%d\n",croisement);
-    affiche_matrice(load(fichier));
-    fclose (fichier) ;
-    //free(matrice);
-    return 0;
+int** adjacence=make_adjacence(fichier);
 }
