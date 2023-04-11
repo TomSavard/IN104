@@ -33,7 +33,7 @@ int main(){
     }
     fprintf(f,"%d %d\n",n,m);
 
-    //puis on défini l'aarivé et le plaisir de chaque piste
+    //puis on définit l'arrivée et le plaisir de chaque piste
     for(int xi=0; xi<n; xi++){
         int* existe=calloc(n,sizeof(int)); // vecteur pour l'existence de piste sur ce croisement
         for (int i=0; i<nbr_piste[xi]; i++){ //pour chaque piste partant de xi, on prend un croisement d'arriver yi et un plaisir fi
