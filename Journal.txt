@@ -10,4 +10,10 @@ Séance du 04/04/23
     . Réalisation du fichier de lecture à partir des txt
 
 Séance du 11/04/23
+    . recherche sur les algo à mettre en place
+    --> force brute , dijkstra
+Pour la prochaine fois :
+    . faire méthode brute force
+    . faire méthode dijkstra
+
 
