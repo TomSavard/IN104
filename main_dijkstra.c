@@ -115,44 +115,52 @@ int dijkstra(struct data_t data){
 
     // on ajoute ses voisins à la liste de traitement
     for (int i=0; i<data.nbr_croisements;i++){
-        if (adjacence[0][i]!=0){
+        if (adjacence[0][i]!=INT_MIN){
             distance[i]=adjacence[0][i];
             predecesseur[i]=0;
             statut[i]=1;}
     }
     statut[0]=2; // 0 est traité
-
-int bugInf=10;
+        printf("On traite le sommet 0\n");
+        affiche_list(distance,data.nbr_croisements);
+        affiche_list(predecesseur,data.nbr_croisements);
+        affiche_list(statut,data.nbr_croisements);
+        printf("\n");
+int bugInf=data.nbr_croisements;
 int boucle=0;
 
     while(traitement_fini(statut,data.nbr_croisements)!=1){
         // il faut résussir à récupérer 'indice du sommet non marqué ayant le plus grand plaisir 
-        int k=1;
+        int k=0;
+        while (statut[k]!=1){
+            k+=1;}
+            
         for (int n=0; n<data.nbr_croisements;n++){
             if (statut[n]==1 && distance[n]>distance[k]){
                 k=n;
-                printf("boucle1\n");
             }
         }
+        printf("On traite le sommet %d\n",k);
 
         //on actualise les plaisirs
         for (int j=0; j<data.nbr_croisements;j++){
             if (adjacence[k][j]!=INT_MIN && distance[j]<distance[k]+adjacence[k][j]){
                 distance[j]=distance[k]+adjacence[k][j];
                 predecesseur[j]=k;
-                }
                 statut[j]=1;
-            printf("%d",j);
-            printf("boucle2\n");
+                }
         }
+        affiche_list(distance,data.nbr_croisements);
+        affiche_list(predecesseur,data.nbr_croisements);
+        statut[k]=2; // fin du traitement du sommet k
+        affiche_list(statut,data.nbr_croisements);
         printf("\n");
         boucle+=1;
 
         if (boucle==bugInf){
-            printf("sky is the limit");
+            printf("sky is the limit\n");
             return 0;
         }
-        statut[k]=2; // fin du traitement du sommet k
     }
 
     // Trouver la valeur maximale de la distance
