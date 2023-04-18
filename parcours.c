@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <limits.h>
 
 struct data_t{ // definition d'une structure permettant de stocker les données en entrée des graphes
     int nbr_croisements;
@@ -50,13 +51,14 @@ struct data_t load(FILE *fichier){ //permet la lecture des données contenues da
     return res;
 }
 
-int** make_adjacence(struct data_t data){ // permet de réorganiser les données sous la forme d'une matrice d'adjacence.
+// permet de réorganiser les données sous la forme d'une matrice d'adjacence.
+int** make_adjacence(struct data_t data){
     int** adjacence=malloc(sizeof(int*)*data.nbr_croisements);
 
-    for (int i=0; i<data.nbr_croisements; ++i) {  // on initialise la matrice avec des - inf pour les sommets non voisins (pour le moment 0 car bug sinon)
+    for (int i=0; i<data.nbr_croisements; ++i) {  // on initialise la matrice avec des - inf pour les sommets non voisins
         adjacence[i]=malloc(sizeof(int)*data.nbr_croisements);
         for (int j=0; j<=data.nbr_croisements; ++j) {
-        adjacence[i][j]=0;
+        adjacence[i][j]=INT_MIN;
         }
     }
     for (int p=0; p<data.nbr_pistes; p++){ 
@@ -64,7 +66,6 @@ int** make_adjacence(struct data_t data){ // permet de réorganiser les données
     }
     return adjacence;
 } 
-
 
 
 int list_max_index(int* liste,int taille){ // fct qui renvoie l'indice du max de la liste 
@@ -79,6 +80,7 @@ int list_max_index(int* liste,int taille){ // fct qui renvoie l'indice du max de
 return max_index;
 }
 
+
 int traitement_fini(int* statut,int taille){ //test si il ne reste pas de sommet à traiter cad voisin d'un visité mais pas encore visité
     for (int i=0;i<taille;i++){
         if (statut[i]==1){
@@ -87,24 +89,97 @@ int traitement_fini(int* statut,int taille){ //test si il ne reste pas de sommet
     }
     return 1;}
 
+
 void affiche_list(int* list, int taille){
     for(int i=0;i<taille;i++){
         printf("%d ",list[i]);
     }
     printf("\n");
 }
-/* c'est un vrai bazarre sans introduire de liste chainée 
-int ExistChemin(int** adjacence,int nbr_croisements,int u, int v){
-    int* visite=calloc(nbr_croisements,sizeof(int));
-    int* file =malloc(sizeof(int)*nbr_croisements);
 
-    while (test==0 && k<nbr_croisements){
-        
+int dijkstra(struct data_t data){
+    //mise en place des tableaux pour l'algorithme 
+    int** adjacence=make_adjacence(data);
+    int* distance=malloc(sizeof(int)*data.nbr_croisements);
+    int* predecesseur=malloc(sizeof(int)*data.nbr_croisements);
+    int* statut=calloc(data.nbr_croisements,sizeof(int)); // 0 = non visité, 1 = voisin d'un visité mais reste à traiter, 2=visité 
 
 
+    for (int i=0; i<data.nbr_croisements; i++){// initialisation du plaisir à -inf
+        distance[i]=INT_MIN;
+        predecesseur[i]=-1;}
+
+    //On part du sommet 0
+    distance[0]=0;
+    statut[0]=1;
+
+    // on ajoute ses voisins à la liste de traitement
+    for (int i=0; i<data.nbr_croisements;i++){
+        if (adjacence[0][i]!=0){
+            distance[i]=adjacence[0][i];
+            predecesseur[i]=0;
+            statut[i]=1;}
+    }
+    statut[0]=2; // 0 est traité
+
+int bugInf=10;
+int boucle=0;
+
+    while(traitement_fini(statut,data.nbr_croisements)!=1){
+        // il faut résussir à récupérer 'indice du sommet non marqué ayant le plus grand plaisir 
+        int k=1;
+        for (int n=0; n<data.nbr_croisements;n++){
+            if (statut[n]==1 && distance[n]>distance[k]){
+                k=n;
+                printf("boucle1\n");
+            }
+        }
+
+        //on actualise les plaisirs
+        for (int j=0; j<data.nbr_croisements;j++){
+            if (adjacence[k][j]!=INT_MIN && distance[j]<distance[k]+adjacence[k][j]){
+                distance[j]=distance[k]+adjacence[k][j];
+                predecesseur[j]=k;
+                }
+                statut[j]=1;
+            printf("%d",j);
+            printf("boucle2\n");
+        }
+        printf("\n");
+        boucle+=1;
+
+        if (boucle==bugInf){
+            printf("sky is the limit");
+            return 0;
+        }
+        statut[k]=2; // fin du traitement du sommet k
+    }
+
+    // Trouver la valeur maximale de la distance
+    int valeur_bonheur=0;
+    for (int i = 0; i < data.nbr_croisements; i++) {
+        if (distance[i] > valeur_bonheur) {
+            valeur_bonheur = distance[i];
+    }
+    }
+
+    //on libère les espaces mémoires
+    free(distance);
+    free(predecesseur);
+    free(statut);
+    free(adjacence);
+
+    //on retourne le bonheur maximum du jours
+
+    if (valeur_bonheur == 0) {
+        printf("Le ski c'est pas fait pour moi\n");
+        return 0;
+    }
+     else {
+        printf("La valeur maximale de bonheur est de %d\n", valeur_bonheur);
+        return valeur_bonheur;
     }
 }
-*/
 
 
 
@@ -115,54 +190,18 @@ int main ( int argc , char* argv [] ) {
         return (1);
     }
 
-
+// lecture et résupération des données
 FILE *fichier = fopen (argv[1], "r") ;
-struct data_t data=load(fichier); //récupère les données
+struct data_t data=load(fichier);
+
+//print de la matrice d'adjacence 
 int** adjacence=make_adjacence(data);
-
-
-// Mise en place de l'algorithme de dijkstra
-// On a un tableau de distance, un de prédécesseur et un de statut.
-int* distance=malloc(sizeof(int)*data.nbr_croisements);
-int* predecesseur=malloc(sizeof(int)*data.nbr_croisements);
-int* statut=calloc(data.nbr_croisements,sizeof(int)); // 0 = non visité, 1 = voisin d'un visité mais reste à traiter, 2=visité 
-
-for (int i=0; i<data.nbr_croisements; i++){
-    distance[i]=-INFINITY;
-    predecesseur[i]=-1;}
-//On part du sommet 0
-distance[0]=0;
-statut[0]=1;
 for (int i=0; i<data.nbr_croisements;i++){
-    if (adjacence[0][i]!=0){
-        distance[i]=adjacence[0][i];
-        predecesseur[i]=0;
-        statut[i]=1;}
+    affiche_list(adjacence[i],data.nbr_croisements);
 }
-statut[0]=2;
 
-while(traitement_fini(statut,data.nbr_croisements)!=1){
-// il faut résussir à récupérer 'indice du sommet non marqué ayant la plus grande distance 
-    int k=1;
-    for (int n=0; n<data.nbr_croisements;n++){
-        if (statut[n]==1 && distance[n]>distance[k]){
-            k=n;
-        }
-    }
-    for (int j=0; j<data.nbr_croisements;j++){
-        if (adjacence[k][j]!=0){
-            if (distance[j]<distance[k]+adjacence[k][j]){
-                distance[j]=distance[k]+adjacence[k][j];
-                predecesseur[j]=k;
-            }
-            statut[j]=1;
-        }
-    }
-    affiche_list(distance,data.nbr_croisements);
-    affiche_list(predecesseur,data.nbr_croisements);
-    affiche_list(statut,data.nbr_croisements);
-    printf("\n");
+//résultat du parcours de graph
+int bonheur=dijkstra(data);
 
-    statut[k]=2;
-}
+return 0;
 }
