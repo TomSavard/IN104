@@ -121,26 +121,30 @@ int dijkstra(struct data_t data){
             statut[i]=1;}
     }
     statut[0]=2; // 0 est traité
+
+    /*
         printf("On traite le sommet 0\n");
         affiche_list(distance,data.nbr_croisements);
         affiche_list(predecesseur,data.nbr_croisements);
         affiche_list(statut,data.nbr_croisements);
         printf("\n");
-int bugInf=data.nbr_croisements;
-int boucle=0;
+    */
+
+    int bugInf=data.nbr_croisements;
+    int boucle=0;
 
     while(traitement_fini(statut,data.nbr_croisements)!=1){
         // il faut résussir à récupérer 'indice du sommet non marqué ayant le plus grand plaisir 
         int k=0;
         while (statut[k]!=1){
             k+=1;}
-            
+
         for (int n=0; n<data.nbr_croisements;n++){
             if (statut[n]==1 && distance[n]>distance[k]){
                 k=n;
             }
         }
-        printf("On traite le sommet %d\n",k);
+        //printf("On traite le sommet %d\n",k);
 
         //on actualise les plaisirs
         for (int j=0; j<data.nbr_croisements;j++){
@@ -150,11 +154,11 @@ int boucle=0;
                 statut[j]=1;
                 }
         }
-        affiche_list(distance,data.nbr_croisements);
-        affiche_list(predecesseur,data.nbr_croisements);
+        /*affiche_list(distance,data.nbr_croisements);
+        affiche_list(predecesseur,data.nbr_croisements);*/
         statut[k]=2; // fin du traitement du sommet k
-        affiche_list(statut,data.nbr_croisements);
-        printf("\n");
+        /*affiche_list(statut,data.nbr_croisements);
+        printf("\n");*/
         boucle+=1;
 
         if (boucle==bugInf){
@@ -180,7 +184,7 @@ int boucle=0;
     //on retourne le bonheur maximum du jours
 
     if (valeur_bonheur == 0) {
-        printf("Le ski c'est pas fait pour moi\n");
+        printf("Le ski c'est pas fait pour moi (plaisir négatif :( )\n");
         return 0;
     }
      else {
@@ -202,11 +206,11 @@ int main ( int argc , char* argv [] ) {
 FILE *fichier = fopen (argv[1], "r") ;
 struct data_t data=load(fichier);
 
-//print de la matrice d'adjacence 
+/*print de la matrice d'adjacence 
 int** adjacence=make_adjacence(data);
 for (int i=0; i<data.nbr_croisements;i++){
     affiche_list(adjacence[i],data.nbr_croisements);
-}
+}*/
 
 //résultat du parcours de graph
 int bonheur=dijkstra(data);
