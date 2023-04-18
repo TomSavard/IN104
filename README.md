@@ -13,3 +13,15 @@ pour l'éxécuter:
 
 gcc main_bellman.c
 ./a.out data.txt
+
+Le programme main_dijkstra.c
+
+dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence
+puis le programme utilise la méthode de parcourt de graphe de dijkstra adaptée pour trouver le plus long chemin (ou chemin de plaisir max)
+
+il ne retourne que le plaisir max accessible (une fonction pour récupérer le chemin correspondant sera ajouter prochainement)
+
+pour l'éxécuter:
+
+gcc main_dijkstra.c
+./a.out data.txt
