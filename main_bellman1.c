@@ -47,11 +47,13 @@ int** create_matrice_adj(int** matrice, int croisement, int piste){
     }
    
     for(int i = 0; i < piste; i++){
-        
+printf("\n");
         int u = matrice[i][0];
         int v = matrice[i][1];
         int w = matrice[i][2];
+
         adj_matrice[u][v] = w;
+ 
     }
     return adj_matrice;
     
@@ -72,7 +74,7 @@ int bellman_ford(int** matrice_adj, int croisement) {
 
     /*choix du noeud source*/
     distance[0] = 0;
-
+    
     /*parcourt les croisements du graphe et calcule la distance max de chaque croisement jusqu'au croisement source*/
     for (int i = 0; i < croisement - 1; i++) {
     for (int u = 0; u < croisement; u++) {
@@ -149,12 +151,14 @@ int main ( int argc , char* argv [] ) {
     printf("nombre de croisements :%d\n",croisement);
     printf("\n");
     //affiche_matrice(load(fichier),croisement, piste);
+
  
     int** matrice = load (fichier);
-    
-    int** matrice_adj = create_matrice_adj(matrice, piste, piste);
+  
+    int** matrice_adj = create_matrice_adj(matrice, croisement, piste);
 
     printf("matrice d'adjacence du graphe:\n");
+
     affiche_matrice(matrice_adj,croisement,piste);
     printf("\n");
     bellman_ford(matrice_adj,croisement);
