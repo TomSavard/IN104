@@ -47,7 +47,7 @@ int** create_matrice_adj(int** matrice, int croisement, int piste){
     }
    
     for(int i = 0; i < piste; i++){
-printf("\n");
+
         int u = matrice[i][0];
         int v = matrice[i][1];
         int w = matrice[i][2];
@@ -119,9 +119,9 @@ int bellman_ford(int** matrice_adj, int croisement) {
 
 void affiche_matrice(int** matrice, int croisement,int piste){
 
-    for (int j=0; j<=piste-1; ++j) {
+    for (int j=0; j<=croisement-1; ++j) {
                
-        for (int i=0; i<=piste-1; ++i) {
+        for (int i=0; i<=croisement-1; ++i) {
           
             printf("%d ",matrice[j][i]);
         }
