@@ -3,7 +3,7 @@
 
 // On a un plaisir pouvant être positif ou négatif. 
 // Il faut être capable de détecter les cycles positifs ==> boucle infini
-//18 avril : boucle infini à cause du cycle positif. 
+//18 avril : l'algo fonctionne pour les différents tests.
 
 #include <stdio.h>
 #include <string.h>
@@ -163,17 +163,27 @@ int dijkstra(struct data_t data){
 
         if (boucle==bugInf){
             printf("sky is the limit\n");
+            //on libère les espaces mémoires
+            free(distance);
+            free(predecesseur);
+            free(statut);
+            free(adjacence);
             return 0;
         }
     }
 
-    // Trouver la valeur maximale de la distance
-    int valeur_bonheur=0;
-    for (int i = 0; i < data.nbr_croisements; i++) {
-        if (distance[i] > valeur_bonheur) {
-            valeur_bonheur = distance[i];
+    //Croisement d'arrivée
+    int arrivée=list_max_index(distance,data.nbr_croisements);
+    // Plaisir maximal
+    int valeur_bonheur=distance[arrivée];
+    //Récupération du chemin à suivre, on a les predecesseurs des croisements. Il faut donc remonter le chemin et non le descendre
+    int position=arrivée;
+    printf("Chemin à suivre : \n");
+    while (predecesseur[position]!=-1){
+        printf("%d <-- ",position);
+        position=predecesseur[position];
     }
-    }
+    printf("0\n");
 
     //on libère les espaces mémoires
     free(distance);
@@ -201,6 +211,9 @@ int main ( int argc , char* argv [] ) {
         printf("Wrong number of argument\n");
         return (1);
     }
+    clock_t start, end;
+    double execution_time;
+    start = clock();
 
 // lecture et résupération des données
 FILE *fichier = fopen (argv[1], "r") ;
@@ -215,5 +228,8 @@ for (int i=0; i<data.nbr_croisements;i++){
 //résultat du parcours de graph
 int bonheur=dijkstra(data);
 
+end = clock();
+execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
+printf("Temps d'exécution : %lfs\n",execution_time);
 return 0;
 }
