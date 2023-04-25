@@ -17,9 +17,8 @@ gcc main_bellman.c
 Le programme main_dijkstra.c
 
 dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence
-puis le programme utilise la méthode de parcourt de graphe de dijkstra adaptée pour trouver le plus long chemin (ou chemin de plaisir max)
-
-il ne retourne que le plaisir max accessible (une fonction pour récupérer le chemin correspondant sera ajouter prochainement)
+On sait appuyer sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème 
+il retourne le plaisir maximal accessible ainsi que le chemin à suivre
 
 pour l'éxécuter:
 
