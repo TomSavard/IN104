@@ -26,5 +26,7 @@ Il retourne le plaisir maximal accessible ainsi que le chemin à suivre.
 
 pour l'éxécuter:
 - se placer dans le dossier "programme_dijkstra"
+
 make
+
 ./main_dijkstra ../data.txt
