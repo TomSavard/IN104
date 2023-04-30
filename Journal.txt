@@ -17,3 +17,5 @@ Pour la prochaine fois :
     . faire méthode dijkstra
 
 
+Travail perso 30/04/23
+    Réalisation d'un makefile et de sous fichier .h pour le dijkstra sur le même modèle que celui de bellman.
