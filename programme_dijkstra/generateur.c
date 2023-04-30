@@ -12,7 +12,7 @@ int main(){
 
     // on stock les données dans un txt
     FILE *f;
-    f = fopen("./data/test.txt", "w");
+    f = fopen("../data/test.txt", "w");
     if(f==NULL){
     printf("Erreur lors de l'ouverture d'un fichier\n");
     exit(1);}
