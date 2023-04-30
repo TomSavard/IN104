@@ -21,7 +21,7 @@ make
 
 dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence.
 
-On sait appuyer sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème.
+On s'est appuyé sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème.
 Il retourne le plaisir maximal accessible ainsi que le chemin à suivre.
 
 pour l'éxécuter:
