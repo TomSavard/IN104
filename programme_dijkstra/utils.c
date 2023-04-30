@@ -1,5 +1,5 @@
 // contient diverses fonctions pouvant servir
-
+#include <stdio.h>
 
 int list_max_index(int* liste,int taille){ // fct qui renvoie l'indice du max de la liste 
     int max=liste[0];

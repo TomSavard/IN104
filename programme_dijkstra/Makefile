@@ -1,10 +1,18 @@
 CC=gcc
-CFLAGS=-g
+CFLAGS= -Wall -Wextra -pedantic
 
-programme.x: main_dijkstra.c
-	$(CC) $(CFLAGS) -o programme.x main_dijkstra.c
+EXEC=main_dijkstra
 
-	./programme.x ../data.txt
+SRC_FILES = main_dijkstra.c dijkstra.c matrice.c lecture.c utils.c
+OBJ_FILES = $(patsubst %.c,%.o,$(SRC_FILES))
+
+all: $(EXEC)
+
+main_dijkstra : $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBS) -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f programme.x
-	rm -rf programme.x.dSYM
+	rm -f *.o

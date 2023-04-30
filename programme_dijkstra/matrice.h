@@ -10,6 +10,6 @@ typedef struct{
 
 int** make_adjacence(data_t data);
 
-void affiche_matrice(int** matrice, int croisement,int piste);
+void affiche_matrice(int** matrice, int croisement);
 
 #endif

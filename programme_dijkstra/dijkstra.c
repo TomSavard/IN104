@@ -124,5 +124,3 @@ int dijkstra(data_t data){
         return valeur_bonheur;
     }
 }
-
-

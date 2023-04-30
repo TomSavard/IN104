@@ -26,7 +26,7 @@ int** make_adjacence(data_t data){
 } 
 
 // affichage de la matrice (piqué à Alexandre)
-void affiche_matrice(int** matrice, int croisement,int piste){
+void affiche_matrice(int** matrice, int croisement){
 
     for (int j=0; j<=croisement-1; ++j) {
                
