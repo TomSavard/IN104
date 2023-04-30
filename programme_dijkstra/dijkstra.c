@@ -1,10 +1,3 @@
-/*Tom SAVARD 11 avril*/
-// Ce programme a pour objectif de parcourir le graph et de calculer le plaisir optimal 
-
-// On a un plaisir pouvant être positif ou négatif. 
-// Il faut être capable de détecter les cycles positifs ==> boucle infini
-//18 avril : l'algo fonctionne pour les différents tests.
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -12,73 +5,10 @@
 #include <time.h>
 #include <limits.h>
 
-struct data_t{ // definition d'une structure permettant de stocker les données en entrée des graphes
-    int nbr_croisements;
-    int nbr_pistes;
-    int** matrice;
-};
-
-struct data_t load(FILE *fichier){ //permet la lecture des données contenues dans les fichiers .txt
-
-    int croisement;
-    int piste;
-    int n;
-    int read;
-    struct data_t res;
-    
-    read = fscanf (fichier, "%d", &croisement) ;
-    read = fscanf (fichier, "%d", &piste) ;
-
-    if (read != 1) {
-      fclose (fichier) ;
-      printf("erreur de lecture\n");
-    }
-
-    int** matrice=malloc(sizeof(int*)*piste);
-    
-    for (int i=0; i<=piste-1; ++i) {
-
-        matrice[i]=malloc(sizeof(int)*3);
-
-        for (int j=0; j<=2; ++j) {
-        read = fscanf (fichier, "%d", &n) ;
-        matrice[i][j]=n;
-        }
-    }
-    res.nbr_croisements=croisement;
-    res.nbr_pistes=piste;
-    res.matrice=matrice;
-    return res;
-}
-
-// permet de réorganiser les données sous la forme d'une matrice d'adjacence.
-int** make_adjacence(struct data_t data){
-    int** adjacence=malloc(sizeof(int*)*data.nbr_croisements);
-
-    for (int i=0; i<data.nbr_croisements; ++i) {  // on initialise la matrice avec des - inf pour les sommets non voisins
-        adjacence[i]=malloc(sizeof(int)*data.nbr_croisements);
-        for (int j=0; j<=data.nbr_croisements; ++j) {
-        adjacence[i][j]=INT_MIN;
-        }
-    }
-    for (int p=0; p<data.nbr_pistes; p++){ 
-        adjacence[data.matrice[p][0]][data.matrice[p][1]]=data.matrice[p][2];
-    }
-    return adjacence;
-} 
-
-
-int list_max_index(int* liste,int taille){ // fct qui renvoie l'indice du max de la liste 
-    int max=liste[0];
-    int max_index=0;
-    for (int i=1; i<taille;i++){
-        if (liste[i]>max){
-            max=liste[i];
-            max_index=i;
-        }
-    }
-return max_index;
-}
+#include "matrice.h"
+#include "lecture.h"
+#include "dijkstra.h"
+#include "utils.h"
 
 
 int traitement_fini(int* statut,int taille){ //test si il ne reste pas de sommet à traiter cad voisin d'un visité mais pas encore visité
@@ -89,15 +19,7 @@ int traitement_fini(int* statut,int taille){ //test si il ne reste pas de sommet
     }
     return 1;}
 
-
-void affiche_list(int* list, int taille){
-    for(int i=0;i<taille;i++){
-        printf("%d ",list[i]);
-    }
-    printf("\n");
-}
-
-int dijkstra(struct data_t data){
+int dijkstra(data_t data){
     //mise en place des tableaux pour l'algorithme 
     int** adjacence=make_adjacence(data);
     int* distance=malloc(sizeof(int)*data.nbr_croisements);
@@ -204,32 +126,3 @@ int dijkstra(struct data_t data){
 }
 
 
-
-int main ( int argc , char* argv [] ) {
-
-    if (argc!=2){
-        printf("Wrong number of argument\n");
-        return (1);
-    }
-    clock_t start, end;
-    double execution_time;
-    start = clock();
-
-// lecture et résupération des données
-FILE *fichier = fopen (argv[1], "r") ;
-struct data_t data=load(fichier);
-
-/*print de la matrice d'adjacence 
-int** adjacence=make_adjacence(data);
-for (int i=0; i<data.nbr_croisements;i++){
-    affiche_list(adjacence[i],data.nbr_croisements);
-}*/
-
-//résultat du parcours de graph
-int bonheur=dijkstra(data);
-
-end = clock();
-execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
-printf("Temps d'exécution : %lfs\n",execution_time);
-return 0;
-}
