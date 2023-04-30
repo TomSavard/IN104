@@ -1,4 +1,4 @@
-        LE PROGRAMME main_bellman.c:
+LE PROGRAMME main_bellman.c:
 
 dans ce programme on récupère les données du fichier *.txt pour les mettre dans une matrice d'adjacence
 puis le programme utilise la méthode de parcourt de graphe de bellman ford (merci wikipédia) adaptée pour trouver le plus long chemin
@@ -17,7 +17,7 @@ make
 
 
 
-        LE PROGRAMME main_dijkstra.c:
+LE PROGRAMME main_dijkstra.c:
 
 dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence
 On sait appuyer sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème 
