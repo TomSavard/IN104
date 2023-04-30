@@ -19,9 +19,10 @@ make
 
         LE PROGRAMME main_dijkstra.c:
 
-dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence
-On sait appuyer sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème 
-il retourne le plaisir maximal accessible ainsi que le chemin à suivre
+dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence.
+
+On sait appuyer sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème.
+Il retourne le plaisir maximal accessible ainsi que le chemin à suivre.
 
 pour l'éxécuter:
 - se placer dans le dossier "programme_dijkstra"
