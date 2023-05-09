@@ -100,12 +100,12 @@ int dijkstra(data_t data){
     int valeur_bonheur=distance[arrivée];
     //Récupération du chemin à suivre, on a les predecesseurs des croisements. Il faut donc remonter le chemin et non le descendre
     int position=arrivée;
-    printf("Chemin à suivre : \n");
-    while (predecesseur[position]!=-1){
-        printf("%d <-- ",position);
-        position=predecesseur[position];
-    }
-    printf("0\n");
+    // printf("Chemin à suivre : \n");
+    // while (predecesseur[position]!=-1){
+    //     printf("%d <-- ",position);
+    //     position=predecesseur[position];
+    // }
+    // printf("0\n");
 
     //on libère les espaces mémoires
     free(distance);
@@ -116,11 +116,13 @@ int dijkstra(data_t data){
     //on retourne le bonheur maximum du jours
 
     if (valeur_bonheur == 0) {
-        printf("Le ski c'est pas fait pour moi (plaisir négatif :( )\n");
+        //printf("Le ski c'est pas fait pour moi (plaisir négatif :( )\n");
+        printf("plaisir négatif\n");
         return 0;
     }
      else {
-        printf("La valeur maximale de bonheur est de %d\n", valeur_bonheur);
+        // printf("La valeur maximale de bonheur est de %d\n", valeur_bonheur);
+        printf("%d\n", valeur_bonheur);
         return valeur_bonheur;
     }
 }

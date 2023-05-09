@@ -36,6 +36,6 @@ dijkstra(data);
 
 end = clock();
 execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
-printf("Temps d'exécution : %lfs\n",execution_time);
+// printf("Temps d'exécution : %lfs\n",execution_time);
 return 0;
 }
