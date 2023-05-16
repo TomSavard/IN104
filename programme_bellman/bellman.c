@@ -54,11 +54,11 @@ int bellman_ford(int** matrice_adj, int croisement) {
     free(distance);
 
     if (valeur_bonheur == INT_MIN || valeur_bonheur <= 0) {
-        printf("Vous ne pouvez pas skier aujourd'hui :(\n");
+        printf("0\n");
         return 0;
     }
      else {
-        printf("La valeur maximale de bonheur est de %d\n", valeur_bonheur);
+        printf("%d\n", valeur_bonheur);
         return valeur_bonheur;
     }
 }
