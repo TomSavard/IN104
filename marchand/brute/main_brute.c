@@ -32,6 +32,9 @@ data_t data=load(fichier);
 //     affiche_list(adjacence[i],data.nbr_ville);
 // }
 
+for (int i=0; i<data.nbr_ville;i++){
+    affiche_list(data.matrice[i],2);
+}
 
 end = clock();
 execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
