@@ -117,7 +117,7 @@ int dijkstra(data_t data){
 
     if (valeur_bonheur == 0) {
         //printf("Le ski c'est pas fait pour moi (plaisir négatif :( )\n");
-        printf("plaisir négatif\n");
+        printf("0\n");
         return 0;
     }
      else {
