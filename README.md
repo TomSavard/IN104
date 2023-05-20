@@ -1,5 +1,5 @@
 # Projet Ski
-Réalisé par Alexandre Larry et Tom Savard dans le cadre du cours IN104
+Réalisé par __Alexandre Larry__ et __Tom Savard__ dans le cadre du cours IN104
 ## Description 
 Ce projet réalisé en langage C étudie le parcours de graphe dans différentes situtations. Ici deux situations sont traitées.
 ### Partie 1 : À la recherche du plaisir
