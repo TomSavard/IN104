@@ -12,7 +12,7 @@ L'objectif est alors, en partant du croisement 0, de déterminer le plaisir maxi
 
 Pour cette première tache, nous avons deux programmes:
 
---
+---
 ####            Le programme main_bellman.c:
 On stocke les données dans une __matrice d'adjacence__ puis on utilise la __méthode de Bellman Ford__ afin de trouver le chemin de plaisir maximal.
 
@@ -21,7 +21,7 @@ pour l'éxécuter:
 2. make
 3. ./main_bellman data.txt
 
---
+---
 ####            Le programme main_dijkstra.c:
 Ce programme propose le même principe que le précédent mais effectue un parcour de graphe de proche en proche pour le calcul du plaisir maximal. L'objectif étant de diminuer les temps de calculs. 
 
@@ -47,13 +47,13 @@ Ici le problème n'est plus P mais NP-Complet. Il n'y a pas de solution "parfait
 
 Pour ce faire nous avons mis en place deux solutions simples permettant de comprendre les enjeux.
 
---
+---
 #### Algorithme glouton
 
 Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être mauvaise dans certains cas. En revanche le temps de calculs est très faible.
 Ainsi cette méthode favorise le temps de calculs à la précision.
 
---
+---
 #### Algorithme brute force
 
 À l'opposé de la méthode gloutonne se trouve la brute force. Ici on va calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
