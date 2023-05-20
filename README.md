@@ -28,6 +28,7 @@ pour l'éxécuter:
 2. make
 3. ./main_dijkstra ../data.txt
 
+----------
 ### Partie 2 : Le voyageur de commerce
 L'objectif est maintenant de passer une et unique fois par chaque sommet et de revenir à la position de départ en parcourant une distance minimale.
 
@@ -44,12 +45,14 @@ Ici le problème n'est plus P mais NP-Complet. Il n'y a pas de solution "parfait
 
 Pour ce faire nous avons mis en place deux solutions simples permettant de comprendre les enjeux.
 
-####            Algorithme glouton
+---
+#### Algorithme glouton
 
 Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être mauvaise dans certains cas. En revanche le temps de calculs est très faible.
 Ainsi cette méthode favorise le temps de calculs à la précision.
 
-####            Algorithme brute force
+---
+#### Algorithme brute force
 
 À l'opposé de la méthode gloutonne se trouve la brute force. Ici on va calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
 Ainsi cette méthode favorise la précision au détriment du temps de calculs qui lui explose dès la dizaine de villes atteintes. 
