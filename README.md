@@ -20,6 +20,7 @@ pour l'éxécuter:
 2. make
 3. ./main_bellman data.txt
 
+
         LE PROGRAMME main_dijkstra.c:
 Ce programme propose le même principe que le précédent mais effectue un parcour de graphe de proche en proche pour le calcul du plaisir maximal. L'objectif étant de diminuer les temps de calculs. 
 
