@@ -50,7 +50,7 @@ Pour ce faire nous avons mis en place deux solutions simples permettant de compr
 ---
 ### Algorithme glouton
 
-Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être mauvaise dans certains cas. En revanche le temps de calculs est très faible.
+Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être très approximative dans de nombreux cas. En revanche le temps de calculs est très faible.
 Ainsi cette méthode favorise le temps de calculs à la précision.
 
 ---
