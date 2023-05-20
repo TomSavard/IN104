@@ -16,7 +16,7 @@ Pour cette première tache, nous avons deux programmes:
 ###            Le programme main_bellman.c:
 On stocke les données dans une __matrice d'adjacence__ puis on utilise la __méthode de Bellman Ford__ afin de trouver le chemin de plaisir maximal.
 
-pour l'éxécuter:
+pour l'exécuter:
 1. se placer dans le dossier "programme_bellman"
 2. make
 3. ./main_bellman data.txt
@@ -25,7 +25,7 @@ pour l'éxécuter:
 ###            Le programme main_dijkstra.c:
 Ce programme propose le même principe que le précédent mais effectue un parcour de graphe de proche en proche pour le calcul du plaisir maximal. L'objectif étant de diminuer les temps de calculs. 
 
-pour l'éxécuter:
+pour l'exécuter:
 1. se placer dans le dossier "programme_dijkstra"
 2. make
 3. ./main_dijkstra ../data.txt
@@ -53,8 +53,16 @@ Pour ce faire nous avons mis en place deux solutions simples permettant de compr
 Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être très approximative dans de nombreux cas. En revanche le temps de calculs est très faible.
 Ainsi cette méthode favorise le temps de calculs à la précision.
 
+pour l'exécuter:
+1. se placer dans le dossier "marchand/glouton"
+2. make
+3. ./main_glouton data.txt
+
 ---
 ### Algorithme brute force
 
 À l'opposé de la méthode gloutonne se trouve la brute force. Ici on calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
 Ainsi cette méthode favorise la précision au détriment du temps de calculs qui, lui, explose dès la dizaine de villes atteintes. 
+
+Pour l'exécuter:
+Algorithme non terminé.
