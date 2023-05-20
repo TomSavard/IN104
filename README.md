@@ -2,7 +2,7 @@
 Réalisé par Alexandre Larry et Tom Savard
 ## Description 
 Ce projet réalisé en langage C étudie le parcours de graphe dans différentes situtations. Ici deux situations sont traitées.
-### Partie 1
+### Partie 1 : À la recherche du plaisir
 On prend en entrée un fichier .txt comportant :
 * $n$ : le nombre de croisements 
 * $m$ : le nombre de pistes 
@@ -28,3 +28,29 @@ pour l'éxécuter:
 1. se placer dans le dossier "programme_dijkstra"
 2. make
 3. ./main_dijkstra ../data.txt
+
+### Partie 2 : Le voyageur de commerce
+L'objectif est maintenant de passer une et unique fois par chaque sommet et de revenir à la position de départ en parcourant une distance minimale.
+
+Fichier d'entrée : 
+- sur la première ligne le nombre de noeuds (donc de points de vues) noté n
+- sur les n lignes suivantes les coordonnées de chacune des villes
+
+Hypothèses : 
+- Dans un premier temps, on peut étudier un graphe complet, c'est à dire qu'entre toutes les villes i et j il existe une route. 
+- On utilise la norme L2 pour calculer des distances
+
+Solutions proposées :
+Ici le problème n'est plus P mais NP-Complet. Il n'y a pas de solution "parfaite". Il faut donc trouver un compromis entre précision et temps de calculs.
+
+Pour ce faire nous avons mis en place deux solutions simples permettant de comprendre les enjeux.
+
+#### Algorithme glouton
+
+Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être mauvaise dans certains cas. En revanche le temps de calculs est très faible.
+Ainsi cette méthode favorise le temps de calculs à la précision.
+
+#### Algorithme brute force
+
+À l'opposé de la méthode gloutonne se trouve la brute force. Ici on va calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
+Ainsi cette méthode favorise la précision au détriment du temps de calculs qui lui explose dès la dizaine de villes atteintes. 
