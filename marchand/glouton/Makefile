@@ -1,14 +1,14 @@
 CC=gcc
 CFLAGS= -Wall -Wextra -pedantic
 
-EXEC=main_brute
+EXEC=main_glouton
 
-SRC_FILES = main_brute.c matrice.c lecture.c utils.c glouton.c
+SRC_FILES = main_glouton.c matrice.c lecture.c utils.c glouton.c
 OBJ_FILES = $(patsubst %.c,%.o,$(SRC_FILES))
 
 all: $(EXEC)
 
-main_brute : $(OBJ_FILES)
+main_glouton : $(OBJ_FILES)
 	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBS) -o $@
 
 %.o: %.c

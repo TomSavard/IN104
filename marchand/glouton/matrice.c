@@ -30,7 +30,7 @@ void affiche_matrice(float** matrice, int nbr_ville){
                
         for (int j=0; j<=nbr_ville-1; ++j) {
           
-            printf("%.1f ",matrice[i][j]);
+            printf("%.0f ",matrice[i][j]);
         }
         printf("\n");    
     }
