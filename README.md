@@ -39,7 +39,7 @@ Fichier d'entrée :
 - sur les n lignes suivantes les coordonnées de chacune des villes
 
 Hypothèses : 
-- Dans un premier temps, on peut étudier un graphe complet, c'est à dire qu'entre toutes les villes i et j il existe une route. 
+- On étudie un graphe complet, c'est à dire qu'entre toutes les villes i et j il existe une route non orientée.
 - On utilise la norme L2 pour calculer des distances
 
 Solutions proposées :
