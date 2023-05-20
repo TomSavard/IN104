@@ -12,7 +12,7 @@ L'objectif est alors, en partant du croisement 0, de déterminer le plaisir maxi
 
 Pour cette première tache, nous avons deux programmes:
 
-        LE PROGRAMME main_bellman.c:
+#### Le programme main_bellman.c:
 On stocke les données dans une __matrice d'adjacence__ puis on utilise la __méthode de Bellman Ford__ afin de trouver le chemin de plaisir maximal.
 
 pour l'éxécuter:
@@ -20,8 +20,7 @@ pour l'éxécuter:
 2. make
 3. ./main_bellman data.txt
 
-
-        LE PROGRAMME main_dijkstra.c:
+#### Le programme main_dijkstra.c:
 Ce programme propose le même principe que le précédent mais effectue un parcour de graphe de proche en proche pour le calcul du plaisir maximal. L'objectif étant de diminuer les temps de calculs. 
 
 pour l'éxécuter:
