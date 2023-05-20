@@ -35,7 +35,7 @@ pour l'éxécuter:
 L'objectif est maintenant de passer une et unique fois par chaque sommet et de revenir à la position de départ en parcourant une distance minimale.
 
 Fichier d'entrée : 
-- sur la première ligne le nombre de noeuds (donc de points de vues) noté n
+- sur la première ligne le nombre de sommets noté n
 - sur les n lignes suivantes les coordonnées de chacune des villes
 
 Hypothèses : 
