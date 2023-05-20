@@ -56,5 +56,5 @@ Ainsi cette méthode favorise le temps de calculs à la précision.
 ---
 ### Algorithme brute force
 
-À l'opposé de la méthode gloutonne se trouve la brute force. Ici on va calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
-Ainsi cette méthode favorise la précision au détriment du temps de calculs qui lui explose dès la dizaine de villes atteintes. 
+À l'opposé de la méthode gloutonne se trouve la brute force. Ici on calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
+Ainsi cette méthode favorise la précision au détriment du temps de calculs qui, lui, explose dès la dizaine de villes atteintes. 
