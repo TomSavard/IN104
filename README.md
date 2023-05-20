@@ -16,9 +16,9 @@ Pour cette première tache, nous avons deux programmes:
 On stocke les données dans une __matrice d'adjacence__ puis on utilise la __méthode de Bellman Ford__ afin de trouver le chemin de plaisir maximal.
 
 pour l'éxécuter:
-1. se placer dans le dossier "programme_dijkstra"
+1. se placer dans le dossier "programme_bellman"
 2. make
-3. ./main_dijkstra ../data.txt
+3. ./main_bellman data.txt
 
 pour l'éxécuter:
 1. se placer dans le dossier "programme_bellman"
