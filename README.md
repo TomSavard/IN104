@@ -19,9 +19,6 @@ pour l'éxécuter:
 2. make
 3. ./main_bellman data.txt
 
-------
-
-
         LE PROGRAMME main_dijkstra.c:
 
 dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence.
