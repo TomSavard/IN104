@@ -19,7 +19,7 @@ On stocke les données dans une __matrice d'adjacence__ puis on utilise la __mé
 pour l'exécuter:
 1. se placer dans le dossier "programme_bellman"
 2. make
-3. ./main_bellman data.txt
+3. ./main_bellman data/data4.txt
 
 ---
 ###            Le programme main_dijkstra.c:

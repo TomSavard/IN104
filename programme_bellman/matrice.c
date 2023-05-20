@@ -30,7 +30,7 @@ int** create_matrice_adj(int** matrice, int croisement, int piste){
     
 }
 
-void affiche_matrice(int** matrice, int croisement,int piste){
+void affiche_matrice(int** matrice, int croisement){
 
     for (int j=0; j<=croisement-1; ++j) {
                

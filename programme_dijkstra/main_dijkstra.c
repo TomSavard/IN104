@@ -17,9 +17,9 @@ int main ( int argc , char* argv [] ) {
         printf("Wrong number of argument\n");
         return (1);
     }
-    clock_t start, end;
-    double execution_time;
-    start = clock();
+    // clock_t start, end;
+    // double execution_time;
+    // start = clock();
 
 // lecture et résupération des données
 FILE *fichier = fopen (argv[1], "r") ;
@@ -34,8 +34,8 @@ for (int i=0; i<data.nbr_croisements;i++){
 //résultat du parcours de graph
 dijkstra(data);
 
-end = clock();
-execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
+// end = clock();
+// execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
 // printf("Temps d'exécution : %lfs\n",execution_time);
 return 0;
 }

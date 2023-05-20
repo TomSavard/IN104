@@ -15,4 +15,4 @@ main_brute : $(OBJ_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o
+	rm -f *.o main_brute

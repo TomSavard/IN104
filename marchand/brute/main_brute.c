@@ -17,9 +17,9 @@ int main ( int argc , char* argv [] ) {
         printf("Wrong number of argument\n");
         return (1);
     }
-    clock_t start, end;
-    double execution_time;
-    start = clock();
+    // clock_t start, end;
+    // double execution_time;
+    // start = clock();
 
 // lecture et résupération des données
 FILE *fichier = fopen (argv[1], "r") ;
@@ -36,7 +36,7 @@ float** adjacence=make_adjacence(data);
 affiche_matrice(adjacence,data.nbr_ville);
 
 free(adjacence);
-end = clock();
-execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
+// end = clock();
+// execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
 return 0;
 }
