@@ -20,15 +20,9 @@ pour l'éxécuter:
 3. ./main_bellman data.txt
 
         LE PROGRAMME main_dijkstra.c:
-
-dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence.
-
-On s'est appuyé sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème.
-Il retourne le plaisir maximal accessible ainsi que le chemin à suivre.
+Ce programme propose le même principe que le précédent mais effectue un parcour de graphe de proche en proche pour le calcul du plaisir maximal. L'objectif étant de diminuer les temps de calculs. 
 
 pour l'éxécuter:
-- se placer dans le dossier "programme_dijkstra"
-
-make
-
-./main_dijkstra ../data.txt
+1. se placer dans le dossier "programme_dijkstra"
+2. make
+3. ./main_dijkstra ../data.txt
