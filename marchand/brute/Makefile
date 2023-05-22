@@ -3,7 +3,7 @@ CFLAGS= -Wall -Wextra -pedantic
 
 EXEC=main_brute
 
-SRC_FILES = main_brute.c matrice.c lecture.c utils.c glouton.c
+SRC_FILES = main_brute.c matrice.c lecture.c utils.c brute.c
 OBJ_FILES = $(patsubst %.c,%.o,$(SRC_FILES))
 
 all: $(EXEC)

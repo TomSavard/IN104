@@ -31,10 +31,12 @@ void affiche_list(int* list, int taille){
 }
 
 
-int voyage_fini(int* statut,int taille){ //test si il ne reste pas de ville à visiter
+int villes_restantes(int* statut,int taille){
+    int compteur=0;
     for (int i=0;i<taille;i++){
         if (statut[i]==0){
-            return 0;
-        }
+            compteur+=1;
+            }
     }
-    return 1;}
+return compteur;
+}
