@@ -18,6 +18,10 @@ int main ( int argc , char* argv [] ) {
 
     FILE *fichier = fopen (argv[1], "r") ;
     
+    clock_t start, end;
+    double execution_time;
+    start = clock();    
+
     int croisement;
     fscanf (fichier, "%d", &croisement) ;
     int piste;
@@ -49,6 +53,8 @@ int main ( int argc , char* argv [] ) {
     printf("\n");
     fclose (fichier) ;
     //free(matrice);
-    
+    end = clock();
+    execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
+    //printf("Temps d'exécution : %lfs\n",execution_time);
     return 0;
 }
