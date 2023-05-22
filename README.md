@@ -66,3 +66,11 @@ Ainsi cette méthode favorise la précision au détriment du temps de calculs qu
 
 Pour l'exécuter:
 Algorithme non terminé.
+
+## Test Unitaire
+Enfin, nous avons intégrer la bibliothèque Unity afin de réaliser quelques tests unitaires sur le fichier utils contenant diverses fonctions.
+
+Pour observer le test :
+1. se placer dans le dossier "marchand/brute"
+2. gcc test_utils.c utils.c ../../Unity-master/src/unity.c -o Test_utils
+3. ./Test_utils
