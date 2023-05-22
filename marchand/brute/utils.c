@@ -11,6 +11,9 @@
 #include "utils.h"
 
 int list_max_index(int* liste,int taille){ // fct qui renvoie l'indice du max de la liste 
+    if (taille==0){
+        return -1;
+    }
     int max=liste[0];
     int max_index=0;
     for (int i=1; i<taille;i++){
