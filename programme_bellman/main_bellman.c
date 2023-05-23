@@ -48,7 +48,7 @@ int main ( int argc , char* argv [] ) {
 
     
     //affiche_matrice(matrice_adj,croisement,piste);
-    printf("\n");
+    
     bellman_ford(matrice_adj,croisement);
     printf("\n");
     fclose (fichier) ;
