@@ -1,2 +1,6 @@
 *.x
 *.o
+main_bellman
+main_dijkstra
+main_glouton
+main_brute

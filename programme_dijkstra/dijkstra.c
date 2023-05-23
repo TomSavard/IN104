@@ -99,7 +99,7 @@ int dijkstra(data_t data){
     // Plaisir maximal
     int valeur_bonheur=distance[arrivée];
     //Récupération du chemin à suivre, on a les predecesseurs des croisements. Il faut donc remonter le chemin et non le descendre
-    int position=arrivée;
+    //int position=arrivée;
     // printf("Chemin à suivre : \n");
     // while (predecesseur[position]!=-1){
     //     printf("%d <-- ",position);

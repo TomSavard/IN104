@@ -1,32 +1,76 @@
-        LE PROGRAMME main_bellman.c:
+# Projet Ski
+Réalisé par __Alexandre Larry__ et __Tom Savard__ dans le cadre du cours IN104
+## Description 
+Ce projet réalisé en langage C étudie le parcours de graphe dans différentes situtations. Ici deux situations sont traitées.
+## Partie 1 : À la recherche du plaisir
+On prend en entrée un fichier .txt comportant :
+* $n$ : le nombre de croisements 
+* $m$ : le nombre de pistes 
+* pour chaque piste un entier $x_i \in [0,n-1]$, un entier $y_i \in [0,n-1]$ et un entier $f_i \in \mathbb{Z}$. Cela signifie que la piste $i$ part du croisement $x_i$, arrive au croisement $y_i$ et vous procure un plaisir $f_i$
 
-dans ce programme on récupère les données du fichier *.txt pour les mettre dans une matrice d'adjacence
-puis le programme utilise la méthode de parcourt de graphe de bellman ford (merci wikipédia) adaptée pour trouver le plus long chemin
+L'objectif est alors, en partant du croisement 0, de déterminer le plaisir maximal atteignable.
 
-il retourne respectivement:
-(-nombre de pistes
--nombre de croisements
--matrice d'adjacence du graphe)
--la configuration associée selon la valeur du bonheur
+Pour cette première tache, nous avons deux programmes:
 
-pour l'éxécuter:
--se placer dans le dossier "programme_bellman"
-make
-./main_bellman data.txt
+---
+###            Le programme main_bellman.c:
+On stocke les données dans une __matrice d'adjacence__ puis on utilise la __méthode de Bellman Ford__ afin de trouver le chemin de plaisir maximal.
 
+pour l'exécuter:
+1. se placer dans le dossier "programme_bellman"
+2. make
+3. ./main_bellman data/data4.txt
 
+---
+###            Le programme main_dijkstra.c:
+Ce programme propose le même principe que le précédent mais effectue un parcour de graphe de proche en proche pour le calcul du plaisir maximal. L'objectif étant de diminuer les temps de calculs. 
 
+pour l'exécuter:
+1. se placer dans le dossier "programme_dijkstra"
+2. make
+3. ./main_dijkstra ../data.txt
 
-        LE PROGRAMME main_dijkstra.c:
+----------
+## Partie 2 : Le voyageur de commerce
+L'objectif est maintenant de passer une et unique fois par chaque sommet et de revenir à la position de départ en parcourant une distance minimale.
 
-dans ce programme on récupère les données du fichier data.txt pour les mettre dans une matrice d'adjacence.
+Fichier d'entrée : 
+- sur la première ligne le nombre de sommets noté n
+- sur les n lignes suivantes les coordonnées de chacune des villes
 
-On s'est appuyé sur la méthode de dijkstra que l'on a par la suite modifié pour s'adapter au problème.
-Il retourne le plaisir maximal accessible ainsi que le chemin à suivre.
+Hypothèses : 
+- On étudie un graphe complet, c'est à dire qu'entre toutes les villes i et j il existe une route non orientée.
+- On utilise la norme L2 pour calculer des distances
 
-pour l'éxécuter:
-- se placer dans le dossier "programme_dijkstra"
+Solutions proposées :
+Ici le problème n'est plus P mais NP-Complet. Il n'y a pas de solution "parfaite". Il faut donc trouver un compromis entre précision et temps de calculs.
 
-make
+Pour ce faire nous avons mis en place deux solutions simples permettant de comprendre les enjeux.
 
-./main_dijkstra ../data.txt
+---
+### Algorithme glouton
+
+Cet algorithme fonctionne "sans mémoire" et recherche à chaque itération l'optimal local. Ceci permet d'avoir une réponse parfois juste mais qui risque d'être très approximative dans de nombreux cas. En revanche le temps de calculs est très faible.
+Ainsi cette méthode favorise le temps de calculs à la précision.
+
+pour l'exécuter:
+1. se placer dans le dossier "marchand/glouton"
+2. make
+3. ./main_glouton data.txt
+
+---
+### Algorithme brute force
+
+À l'opposé de la méthode gloutonne se trouve la brute force. Ici on calculs toutes les combinaisons imaginables afin de déterminer la solution optimale pour le voyageur.
+Ainsi cette méthode favorise la précision au détriment du temps de calculs qui, lui, explose dès la dizaine de villes atteintes. 
+
+Pour l'exécuter:
+Algorithme non terminé.
+
+## Test Unitaire
+Enfin, nous avons intégrer la bibliothèque Unity afin de réaliser quelques tests unitaires sur le fichier utils contenant diverses fonctions.
+
+Pour observer le test :
+1. se placer dans le dossier "marchand/brute"
+2. gcc test_utils.c utils.c ../../Unity-master/src/unity.c -o Test_utils
+3. ./Test_utils

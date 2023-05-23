@@ -17,9 +17,9 @@ int main ( int argc , char* argv [] ) {
         printf("Wrong number of argument\n");
         return (1);
     }
-    clock_t start, end;
-    double execution_time;
-    start = clock();
+    // clock_t start, end;
+    // double execution_time;
+    // start = clock();
 
 // lecture et résupération des données
 FILE *fichier = fopen (argv[1], "r") ;
